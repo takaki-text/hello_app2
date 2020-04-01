@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  root 'top#index'
+  get "travels/show/100" => "travels#show"
 end
