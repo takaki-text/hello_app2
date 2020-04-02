@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  get "travels/show/100" => "travels#show"
+  get "travels/show/:id" => "travels#show"
 end

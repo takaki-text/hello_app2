@@ -1,5 +1,5 @@
 class TravelsController < ApplicationController
   def show
-    render :text => '100'
+    render :text => "id = #{params[:id]}"
   end
 end
