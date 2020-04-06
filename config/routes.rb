@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  get "travels/show/:id" => "travels#show"
+  devise_for :users
+  root "home#index"
 end
