@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 2020_04_19_080823) do
     t.string "unconfirmed_email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    
     t.string "name"
     t.integer "sex"
     t.text "introduction"
