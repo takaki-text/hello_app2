@@ -1,6 +1,14 @@
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-<div class="field">
-    <%= f.label :introduction %><br />
-    <%= f.text_area :introduction, autofocus: true %>
-  </div>
+<img src=<%= @user.image %> class = "icon_image">
+<h4> 名前</h4>
+ <%= @user.name %>
+ <h4> 性別</h4>
+ <%= @user.sex %>
+ <h4> 経歴</h4>
+ <%= @user.career %>
+ <h4> 自己紹介</h4>
+ <%= @user.introduction %>
 
+ <% @courses.each do |course| %>
+  <hr>
+  <p><span>サービス: </span><%=link_to course.plan, course_path(course.id) %></p>
+<% end %>

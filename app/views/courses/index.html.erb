@@ -1,0 +1,6 @@
+<h1>Courses#index</h1>
+<p>Find me in app/views/courses/index.html.erb</p>
+<% @courses.each do |course| %>
+ <p><span>name: </span><%=link_to course.user.name, users_path %></p>
+  <p><span>サービスの内容: </span><%=link_to course.plan, course_path(course.id) %></p>
+<% end %>
