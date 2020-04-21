@@ -5,6 +5,9 @@ class User < ApplicationRecord
 
          :recoverable, :rememberable, :validatable
 
-         
+         validates :name, presence: true  #nameの空欄を許さない
+         enum sex: { man: 1, woman: 2 }
 
+         attr_accessor :current_password
+         mount_uploader :image, ImageUploader
 end
