@@ -8,4 +8,9 @@
  <h4> 自己紹介</h4>
  <%= @user.introduction %>
 
+<% @courses.each do |course| %>
+  <hr>
+  <p><span>サービス: </span><%=course.plan%></p>
+<% end %>
+
 <li> <%= link_to 'プロフィール情報変更', edit_user_registration_path %> <li>
