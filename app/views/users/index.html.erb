@@ -10,5 +10,5 @@
 
  <% @courses.each do |course| %>
   <hr>
-  <p><span>サービス: </span><%=link_to course.plan, course_path(course.id) %></p>
+  <p><span>サービス: </span><%=link_to course.plan, course_path(@user) %></p>
 <% end %>
