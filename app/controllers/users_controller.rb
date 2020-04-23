@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     
   end
   def index
-    @user = User.find(params[:id])
+    @user = User.all
     @courses = @user.courses
   end
 end

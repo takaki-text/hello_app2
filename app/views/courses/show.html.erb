@@ -1,5 +1,14 @@
-<h1>Courses#show</h1>
-<p>Find me in app/views/courses/show.html.erb</p>
-<p><span>名前: </span><%= @user.name %></p>
-<p><%= users_path(course.id) %></p>
-<p><span>サービス内容: </span><%= @course.plan %></p>
+<img src=<%= @user.image %> class = "icon_image">
+<h4> 名前</h4>
+ <%= @user.name %>
+ <h4> 性別</h4>
+ <%= @user.sex %>
+ <h4> 経歴</h4>
+ <%= @user.career %>
+ <h4> 自己紹介</h4>
+ <%= @user.introduction %>
+
+ <% @courses.each do |course| %>
+  <hr>
+  <p><span>サービス: </span><%= course.plan %></p>
+<% end %>
