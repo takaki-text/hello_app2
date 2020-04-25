@@ -28,6 +28,17 @@ EDIT ON
       
     
       <li><%= link_to "サービス一覧", "/courses" %><li>
+       <li><% if user_signed_in? %> 
+            <%= link_to "要望登録", demands_new_path %>
+        <% else %>
+            <%= link_to "新規サービス登録", new_user_session_path %> 
+        <% end %>
+      <li>
+      
+      
+    
+      <li><%= link_to "要望一覧", "/demands" %><li>
+      
       
     </ul>
   </div>

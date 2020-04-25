@@ -1,0 +1,10 @@
+<h1>Demands#edit</h1>
+<p>Find me in app/views/demands/edit.html.erb</p>
+<%= form_tag("/demands/#{@demand.id}/update") do %>
+ <form>
+  <div class="form-group">
+   <label for="exampleInputEmail1">編集する</label>
+   <textarea name="body" class="form-control"><%= @demand.body %></textarea>
+  </div><!--form-group-->
+  <button type="submit" class="btn btn-primary">保存</button>
+<% end %>
