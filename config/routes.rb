@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get "course/:id" => "courses#show"
   post "courses/:id/update" => "courses#update"
   put "courses/:id" => "courses#update"
-  delete "courses/:id" => "courses#destroy"
+  post "courses/:id/destroy" => "courses#destroy"
 
   
   devise_for :users, controllers: {
