@@ -10,8 +10,7 @@
 
 <% @courses.each do |course| %>
   <hr>
-  <p><span>サービス: </span><%=course.plan%></p>
+  <p><span>サービス: </span><%=course.plan%><span><%= link_to '編集', 'course_edit(course.id)' , class: 'btn btn-default'%></span></p>
 <% end %>
 
 <li> <%= link_to 'プロフィール情報変更', edit_user_registration_path %> <li>
-<li> <%= link_to 'サービス内容変更', '/course/:id/edit' %> <li>
