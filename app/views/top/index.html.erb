@@ -19,7 +19,7 @@ EDIT ON
 
       <li>
       <li><% if user_signed_in? %> 
-            <%= link_to "新規サービス登録", new_course_path %>
+            <%= link_to "新規サービス登録", courses_new_path %>
         <% else %>
             <%= link_to "新規サービス登録", new_user_session_path %> 
         <% end %>
@@ -27,7 +27,7 @@ EDIT ON
       
       
     
-      <li><%= link_to "サービス一覧", courses_path %><li>
+      <li><%= link_to "サービス一覧", "/courses" %><li>
       
     </ul>
   </div>
