@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
   
   def show
-    @user = current_user
+    @user = User.find(params[:id])
+    @courses = @user.courses
+    
   end
-  def new
+  def index
+    @user = User.all
+    @courses = @user.courses
   end
 end

@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_19_080823) do
+ActiveRecord::Schema.define(version: 2020_04_21_032821) do
+
+  create_table "courses", force: :cascade do |t|
+    t.text "plan"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,6 +31,7 @@ ActiveRecord::Schema.define(version: 2020_04_19_080823) do
     t.string "unconfirmed_email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "username"
     t.string "name"
     t.integer "sex"
     t.text "introduction"
