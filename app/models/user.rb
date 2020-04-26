@@ -11,5 +11,6 @@ class User < ApplicationRecord
          attr_accessor :current_password
          mount_uploader :image, ImageUploader
          has_many :courses
+         has_many :demands
         
 end

@@ -14,7 +14,7 @@ class CoursesController < ApplicationController
     @courses = @course.user.courses
     @user = @course.user
   end
-
+  
   def create
     @course = Course.new(course_params)
     @course.user_id = current_user.id
@@ -41,7 +41,7 @@ class CoursesController < ApplicationController
   def course_params
     params.require(:course).permit(:plan)# tweetモデルのカラムのみを許可
   end
-  def after_new_course_path_for(resource)
+  def after_courses_new_path_for(resource)
     root_path
   end
 end
