@@ -29,6 +29,7 @@ class CoursesController < ApplicationController
   def update
     @course = Course.find_by(id: params[:id])
     @course.update(plan: params[:plan])
+    @course.update(plan: params[:tag_list])
     redirect_to("/")
   end
 
@@ -37,9 +38,12 @@ class CoursesController < ApplicationController
     @course.destroy
     redirect_to("/")
   end
+  
+  
   private
+  
   def course_params
-    params.require(:course).permit(:plan)# tweetモデルのカラムのみを許可
+    params.require(:course).permit(:plan, :tag_list)
   end
   def after_courses_new_path_for(resource)
     root_path
