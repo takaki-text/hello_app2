@@ -1,13 +1,11 @@
+
 <h1>Courses#index</h1>
 <p>Find me in app/views/courses/index.html.erb</p>
 <% @courses.reverse_each do |course| %>
  <p><span>name: </span><%=link_to course.user.name, "/courses/#{course.id}"%></p>
   <p><span>サービスの内容: </span><%=course.plan%></p>
-   <p><%=course.tag_list%></p>
-<% @courses.each do |tag_list| %>
-  <span class="label label-primary"><%= tag_list %></span>
-<% end %>
- 
+  <span class="badge badge-primary"><%= course.tag_list %></span>
+
 
 <% end %>
 <%= link_to "トップページへ戻る", root_path %>
