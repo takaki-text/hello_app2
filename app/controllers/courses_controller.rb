@@ -29,7 +29,7 @@ class CoursesController < ApplicationController
   def update
     @course = Course.find_by(id: params[:id])
     @course.update(plan: params[:plan])
-    @course.update(plan: params[:tag_list])
+    @course.update(tag_list: params[:tag_list])
     redirect_to("/")
   end
 
@@ -41,7 +41,7 @@ class CoursesController < ApplicationController
   
   
   private
-  
+
   def course_params
     params.require(:course).permit(:plan, :tag_list)
   end
