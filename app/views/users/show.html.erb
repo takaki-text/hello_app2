@@ -11,13 +11,17 @@
 <h4> 登録サービス</h4>
 <% @courses.each do |course| %>
   <hr>
-  <p><span>サービス: </span><%=course.plan%><span><%= link_to '編集',  "/courses/#{course.id}/edit" , class: 'btn btn-default'%></span></p>
+  <p><span>サービス: </span><%=course.plan%></p>
+<span>tag: </span><% course.tag_list.each do |tag| %>
+  <span class="badge badge-primary"><%= tag %></span>
+<% end %>
+<p><span><%= link_to '編集',  "/courses/#{course.id}/edit" %></span></p>
   <span><%= link_to "削除","/courses/#{course.id}/destroy",{method:"post"} %></span>
 <% end %>
 <h4> 登録要望</h4>
 <% @demands.each do |demand| %>
 <hr>
-  <p><span>要望: </span><%=demand.body%><span><%= link_to '編集',  "/demands/#{demand.id}/edit" , class: 'btn btn-default'%></span></p>
+  <p><span>要望: </span><%=demand.body%><span><%= link_to '編集',  "/demands/#{demand.id}/edit" %></span></p>
   <span><%= link_to "削除","/demands/#{demand.id}/destroy",{method:"post"} %></span>
 <% end %>
 
