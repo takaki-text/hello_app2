@@ -12,5 +12,6 @@ class User < ApplicationRecord
          mount_uploader :image, ImageUploader
          has_many :courses
          has_many :demands
+         acts_as_taggable
         
 end

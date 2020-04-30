@@ -6,7 +6,6 @@ class CoursesController < ApplicationController
   
   def index
     @courses = Course.all
-    
   end
 
   def show
@@ -43,7 +42,7 @@ class CoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:course).permit(:plan, :tag_list)
+    params.require(:course).permit(:plan, :title, :tag_list)
   end
   def after_courses_new_path_for(resource)
     root_path

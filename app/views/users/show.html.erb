@@ -3,16 +3,24 @@
  <%= @user.name %>
  <h4> 性別</h4>
  <%= @user.sex %>
+ <h4> スキル</h4>
+ 
+<% @user.tag_list.each do |tag| %>
+  <span class="badge badge-primary"><%= tag %></span>
+<% end %>
  <h4> 経歴</h4>
  <%= @user.career %>
  <h4> 自己紹介</h4>
  <%= @user.introduction %>
 <li> <%= link_to 'プロフィール情報変更', edit_user_registration_path %> <li>
+<h4> 提供できるサービス</h4>
+ <%= @user.declaration %>
 <h4> 登録サービス</h4>
 <% @courses.each do |course| %>
   <hr>
-  <p><span>サービス: </span><%=course.plan%></p>
-<span>tag: </span><% course.tag_list.each do |tag| %>
+  <p><%=course.title%></p>
+  <p><%=course.plan%></p>
+<% course.tag_list.each do |tag| %>
   <span class="badge badge-primary"><%= tag %></span>
 <% end %>
 <p><span><%= link_to '編集',  "/courses/#{course.id}/edit" %></span></p>

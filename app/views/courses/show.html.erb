@@ -3,14 +3,21 @@
  <%= @user.name %>
  <h4> 性別</h4>
  <%= @user.sex %>
+ <h4> スキル</h4>
+ 
+<span>tag: </span><% @user.tag_list.each do |tag| %>
+  <span class="badge badge-primary"><%= tag %></span>
+<% end %>
  <h4> 経歴</h4>
  <%= @user.career %>
  <h4> 自己紹介</h4>
  <%= @user.introduction %>
-
+<h4> 提供できるサービス</h4>
+ <%= @user.declaration %>
  <% @courses.each do |course| %>
   <hr>
-  <p><span>サービス: </span><%= course.plan %></p>
+  <p><span>サービス: </span><%= course.title %></p>
+  <%= course.plan %>
   <% course.tag_list.each do |tag| %>
   <span class="badge badge-primary"><%= tag %></span>
 <% end %>
