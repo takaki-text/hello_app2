@@ -26,11 +26,11 @@
     <%= f.radio_button :sex, :woman %>
   </div>
 
-  <div class="field">
-    <label for="exampleInputEmail"></label>
+  
+<div class="field">
+    <%= f.label :tag_list %><br />
    <textarea name="tag_list" class="form-control"><%= @user.tag_list.join(",") %></textarea>
   </div>
-
 
   
 

@@ -4,7 +4,7 @@
 <% @courses.reverse_each do |course| %>
  <p><%=link_to course.user.name, "/courses/#{course.id}"%></p>
  <p><%= course.title %></p>
-  <p><span>plan </span><%=course.plan%></p>
+  <p><%=course.plan%></p>
   <% course.tag_list.each do |tag| %>
   <span class="badge badge-primary"><%= tag %></span>
 <% end %>
