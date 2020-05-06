@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   
  
   
+  
   root "top#index"
+  post "follows/:id/create" => "courses#create"
+  post "follows/:id/destroy" => "follows#destroy"
+
   get "courses" => "courses#index"
   post "courses" => "courses#create"
   get "courses/new" => "courses#new"
