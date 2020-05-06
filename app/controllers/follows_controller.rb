@@ -2,7 +2,7 @@ class FollowsController < ApplicationController
   before_action :logged_in_user
   def create
     @user = User.find(params[:id])
-    @course.save
+    @follow.save
     redirect_to follows_path
   end
   def destroy
