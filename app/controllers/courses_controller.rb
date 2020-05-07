@@ -12,6 +12,7 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @courses = @course.user.courses
     @user = @course.user
+    @follows = current_user.id
   end
   
   def create
