@@ -4,8 +4,7 @@ Rails.application.routes.draw do
   
   
   root "top#index"
-  post "follows/:id/create" => "follows#create"
-  post "follows/:id/destroy" => "follows#destroy"
+  resources :follows, only: [:create, :destroy]
 
   get "courses" => "courses#index"
   post "courses" => "courses#create"
