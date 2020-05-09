@@ -12,7 +12,6 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @courses = @course.user.courses
     @user = @course.user
-    @follows = current_user.id
   end
   
   def create
@@ -50,4 +49,4 @@ class CoursesController < ApplicationController
   def after_courses_new_path_for(resource)
     root_path
   end
-  end
+end
