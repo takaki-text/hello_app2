@@ -1,5 +1,6 @@
 class FollowsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_user
   def create
     following = current_user.follow(@user)
     if following.save
@@ -23,9 +24,11 @@ class FollowsController < ApplicationController
   end
 
   private
-  def
-    @user = User.find(params[:follow][:follow_id])
+
+  def set_user
+    @user = User.find(params[:follow_id])
   end
 
+  
 
 end

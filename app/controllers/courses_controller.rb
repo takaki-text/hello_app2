@@ -40,6 +40,8 @@ class CoursesController < ApplicationController
   end
   
   
+
+  
   private
 
   def course_params
@@ -48,4 +50,4 @@ class CoursesController < ApplicationController
   def after_courses_new_path_for(resource)
     root_path
   end
-end
+  end
