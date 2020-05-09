@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   
  
+  
+  
   root "top#index"
+  resources :follows, only: [:create, :destroy]
+
   get "courses" => "courses#index"
   post "courses" => "courses#create"
   get "courses/new" => "courses#new"
@@ -10,7 +14,7 @@ Rails.application.routes.draw do
   post "courses/:id/update" => "courses#update"
   put "courses/:id" => "courses#update"
   post "courses/:id/destroy" => "courses#destroy"
-
+  
   get "demands" => "demands#index"
   post "demands" => "demands#create"
   get "demands/new" => "demands#new"
@@ -26,6 +30,10 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'}
     
 
-    resources :users
+    resources :users do
+      member do
+       get :following, :followers, :show2
+      end
+    end
    
 end

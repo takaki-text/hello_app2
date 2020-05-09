@@ -2,8 +2,14 @@
 <p>Find me in app/views/courses/new.html.erb</p>
 
 <%= form_for @course do |f| %>
+
+<p>
+    <%= f.label :title,"サービスタイトル" %>
+    <%= f.text_field :title %>
+  </p>
+
   <p>
-    <%= f.label :plan,"新サービス登録" %>
+    <%= f.label :plan,"プラン" %>
     <%= f.text_field :plan %>
   </p>
  <span>tag登録</span> <div class="field form-group form-group-lg">

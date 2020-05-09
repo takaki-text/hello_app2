@@ -24,11 +24,8 @@ EDIT ON
             <%= link_to "新規サービス登録", new_user_session_path %> 
         <% end %>
       <li>
-      
-      
-    
       <li><%= link_to "サービス一覧", "/courses" %><li>
-       <li><% if user_signed_in? %> 
+      <li><% if user_signed_in? %> 
             <%= link_to "要望登録", demands_new_path %>
         <% else %>
             <%= link_to "新規サービス登録", new_user_session_path %> 
@@ -44,7 +41,13 @@ EDIT ON
   </div>
   <div id='center' class="main center">
     <div class="mainInner">
-      <div>こんにちわ</div>
+      <% @course.select(:user_id).distinct.each do |course| %>
+ <p><%=link_to course.user.name,"/users/#{course.user_id}" %></p>
+ <p><%= course.user.declaration %></p>
+ <% course.user.tag_list.each do |tag| %>
+  <span class="badge badge-primary"><%= tag %></span>
+<% end %>
+ <% end %>
     </div>
     <div class="mainInner">
       <div>今晩わ</div>
