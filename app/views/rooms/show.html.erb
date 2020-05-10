@@ -10,9 +10,6 @@
   <% @messages.each do |m| %>
    <strong><a href="/users/<%= m.user_id %>"><img src=<%= m.user.image %> class = "icon_image_messeges"><%= m.user.name %></a></strong>
     <strong><%= m.content %></strong>
-    <time datetime="<%= content.created_at %>">
-  <%= time_ago_in_words(content.created_at) %>
-</time>
     <hr>
   <% end %>
 <% else %>

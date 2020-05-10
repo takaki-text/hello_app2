@@ -4,6 +4,7 @@
  <h4> 性別</h4>
  <%= @user.sex %>
 
+
 <% unless current_user == @user %>
   <% if current_user.following?(@user) %>
     <%= form_for(current_user.follows.find_by(follow_id: @user.id), html: { method: :delete }) do |f| %>
@@ -17,11 +18,15 @@
     <% end %>
   <% end %>
 <% end %>
+
+
+
+
 <% @user ||= current_user %>
 
-      <%= @user.followings.count %><span>following</span>
+      <%= @user.followings.count %><span>Follow</span>
     
-      <%= @user.followers.count %><span>followes</span>
+      <%= @user.followers.count %><span>Follower</span>
     
 <% if @user.id == current_user.id %>
 

@@ -1,7 +1,14 @@
 <h1>Demands#index</h1>
 <p>Find me in app/views/demands/index.html.erb</p>
 <% @demands.reverse_each do |demand| %>
- <p><span>name: </span><%=link_to demand.user.name, "/demands/#{demand.id}"%></p>
-  <p><span>要望内容: </span><%=demand.body%></p>
+ <p><img src=<%= demand.user.image %> class = "icon_image_messeges"><% if user_signed_in? %>
+            <%=link_to demand.user.name, show2_user_path(demand.user.id)%>
+        <% else %>
+            <%=link_to demand.user.name, "/courses/#{demand.user_id}"%>
+        <% end %>
+  <p><%=demand.body%></p>
 <% end %>
 <%= link_to "トップページへ戻る", root_path %>
+
+
+

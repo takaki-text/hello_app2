@@ -2,7 +2,13 @@
 <h1>Courses#index</h1>
 <p>Find me in app/views/courses/index.html.erb</p><%= link_to "トップページへ戻る", root_path %>
 <% @courses.reverse_each do |course| %>
- <p><%=link_to course.user.name, show2_user_path(course.user.id)%></p>
+
+<p><img src=<%= course.user.image %> class = "icon_image_messeges"><% if user_signed_in? %>
+            <%=link_to course.user.name, show2_user_path(course.user.id)%>
+        <% else %>
+            <%=link_to course.user.name, "/courses/#{course.user_id}"%>
+        <% end %>
+ </p>
  <p><%= course.title %></p>
   <p><%=course.plan%></p>
   <% course.tag_list.each do |tag| %>
