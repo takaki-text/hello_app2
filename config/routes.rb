@@ -24,7 +24,8 @@ Rails.application.routes.draw do
   put "demands/:id" => "demands#update"
   post "demands/:id/destroy" => "demands#destroy"
   
-
+  resources :messages, :only => [:create]
+  resources :rooms, :only => [:create, :show, :index]
   
   devise_for :users, controllers: {
     registrations: 'users/registrations'}
@@ -35,5 +36,6 @@ Rails.application.routes.draw do
        get :following, :followers, :show2
       end
     end
+   
    
 end
