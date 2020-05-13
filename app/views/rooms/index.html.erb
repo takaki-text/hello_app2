@@ -1,0 +1,5 @@
+<% @opponentEntry.each do |e| %>
+<% if @isRoom == true %>
+    <%=link_to e.user.name, "/room/#{@roomId}"%>
+    <% end %>
+<% end %>

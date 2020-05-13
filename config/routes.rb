@@ -25,8 +25,9 @@ Rails.application.routes.draw do
   post "demands/:id/destroy" => "demands#destroy"
   
   resources :messages, :only => [:create]
-  resources :rooms, :only => [:create, :show, :index]
-  
+  get "rooms/:id" => "rooms#index"
+  post "rooms/:id" => "rooms#create"
+  get "room/:id" => "rooms#show"
   devise_for :users, controllers: {
     registrations: 'users/registrations'}
     
