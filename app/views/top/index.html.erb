@@ -18,7 +18,7 @@ EDIT ON
         <% end %>
       <li>
       <li><% if user_signed_in? %> 
-            <%= link_to 'メッセージ', "/rooms/#{current_user.id}" %>
+            <%= link_to 'メッセージ', rooms_path %>
         <% else %>
              <%= link_to "メッセージ", new_user_session_path %> 
         <% end %>

@@ -32,7 +32,7 @@
 
 <% else %>
   <% if @isRoom == true %>
-    <p><a href="/room/<%= @roomId %>">チャットへ</a>
+    <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
   <% else %>
     <%= form_for @room do |f| %>
       <%= fields_for @entry do |e| %>

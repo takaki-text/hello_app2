@@ -4,7 +4,7 @@ class RoomsController < ApplicationController
     @room = Room.create
     @entry1 = Entry.create(:room_id => @room.id, :user_id => current_user.id)
     @entry2 = Entry.create(params.require(:entry).permit(:user_id, :room_id).merge(:room_id => @room.id))
-    redirect_to "/room/#{@room.id}"
+    redirect_to "/rooms/#{@room.id}"
   end
 
   def show
@@ -25,7 +25,6 @@ class RoomsController < ApplicationController
       @opponentEntry.each do |e|
         if cu.room_id == e.room_id then
           @isRoom = true
-          @roomId = cu.room_id
         end
       end
     end
