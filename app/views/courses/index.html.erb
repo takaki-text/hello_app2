@@ -6,7 +6,7 @@
 <p><img src=<%= course.user.image %> class = "icon_image_messeges"><% if user_signed_in? %>
             <%=link_to course.user.name, show2_user_path(course.user.id)%>
         <% else %>
-            <%=link_to course.user.name, "/courses/#{course.user_id}"%>
+            <%=link_to course.user.name, "/courses/#{course.user.id}"%>
         <% end %>
  </p>
  <p><%= course.title %></p>

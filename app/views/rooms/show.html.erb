@@ -1,13 +1,13 @@
 <h1>DM</h1>
 
 <h4>参加者</h4>
-<% @entries.each do |e| %>
+<% @room.entries.each do |e| %>
   <h5><strong><a href="/users/<%= e.user.id %>"><img src=<%= e.user.image %> class = "icon_image_messeges"><%= e.user.name%></a></strong></h5>
 <% end %>
 
 <hr>
-<% if @messages.present? %>
-  <% @messages.each do |m| %>
+<% if @room.messages.present? %>
+  <% @room.messages.each do |m| %>
    <strong><a href="/users/<%= m.user_id %>"><img src=<%= m.user.image %> class = "icon_image_messeges"><%= m.user.name %></a></strong>
     <strong><%= m.content %></strong>
     <hr>

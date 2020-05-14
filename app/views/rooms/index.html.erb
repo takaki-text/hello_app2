@@ -1,6 +1,4 @@
 <% @opponentEntry.each do |e| %>
-<% if @isRoom == true %>
 <p><img src=<%= e.user.image %> class = "icon_image_messeges">
-    <%=link_to e.user.name, "/rooms/#{e.room_id}"%></p>
-    <% end %>
+    <%=link_to e.user.name, "/rooms/#{e.room.id}"%></p>
 <% end %>
