@@ -4,7 +4,7 @@
  <p><img src=<%= demand.user.image %> class = "icon_image_messeges"><% if user_signed_in? %>
             <%=link_to demand.user.name, show2_user_path(demand.user.id)%>
         <% else %>
-            <%=link_to demand.user.name, "/courses/#{demand.user.id}"%>
+            <%=link_to demand.user.name, "/courses/#{demand.id}"%>
         <% end %>
   <p><%=demand.body%></p>
 <% end %>
