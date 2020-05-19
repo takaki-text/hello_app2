@@ -23,6 +23,9 @@ EDIT ON
              <%= link_to "メッセージ", new_user_session_path %> 
         <% end %>
       <li>
+      <li>
+      <%= link_to "NOTICE", notifications_path%>
+      </li>
       
 
       <li><% if user_signed_in? %> 
