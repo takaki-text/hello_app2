@@ -7,7 +7,7 @@ class Room < ApplicationRecord
     temp_ids.each do |temp_id|
       save_notification_message!(current_user, message_id, temp_id['user_id'])
     end
-    
+
   end
 
   def save_notification_message!(current_user, message_id, visited_id)
