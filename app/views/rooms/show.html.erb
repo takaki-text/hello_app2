@@ -8,8 +8,8 @@
 <hr>
 <% if @room.messages.present? %>
   <% @room.messages.each do |m| %>
-   <strong><a href="/users/<%= m.user_id %>"><img src=<%= m.user.image %> class = "icon_image_messeges"><%= m.user.name %></a></strong>
-    <strong><%= m.content %></strong>
+   <strong><a href="/users/<%= m.user_id %>" ><img src=<%= m.user.image %> class = "icon_image_messeges"><%= m.user.name %></a></strong>
+    <strong><%= m.content %>
     <hr>
   <% end %>
 <% else %>
