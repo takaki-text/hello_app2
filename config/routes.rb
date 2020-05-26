@@ -3,6 +3,8 @@ Rails.application.routes.draw do
  
   
   
+  get 'posts/create'
+  get 'posts/destroy'
   root "top#index"
   resources :follows, only: [:create, :destroy]
 
@@ -26,6 +28,7 @@ Rails.application.routes.draw do
   
   resources :messages, :only => [:create]
   resources :rooms, :only => [:create, :show, :index]
+  resources :notifications, :only => [:index, :destroy]
   devise_for :users, controllers: {
     registrations: 'users/registrations'}
     

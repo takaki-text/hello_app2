@@ -1,7 +1,7 @@
 <% @user.followings.each do |user| %>
 <table>
 <tr>
-  <td><img src=<%= user.image %> class = "icon_image_messeges"><%= link_to user.name , show2_user_path(user) %></td>
+  <td><img src=<%= user.image %> class = "icon_image_messeges"><%= link_to user.name , user_path(user.id) %></td>
 </tr>
 </table>
 <% end %>

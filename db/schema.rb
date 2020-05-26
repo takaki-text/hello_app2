@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_09_142952) do
+ActiveRecord::Schema.define(version: 2020_05_20_125615) do
 
   create_table "courses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "plan"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.text "declaration"
     t.string "title"
   end
 
@@ -38,10 +37,13 @@ ActiveRecord::Schema.define(version: 2020_05_09_142952) do
   end
 
   create_table "follows", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "follow_id"
+    t.bigint "user_id"
+    t.bigint "follow_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["follow_id"], name: "index_follows_on_follow_id"
+    t.index ["user_id", "follow_id"], name: "index_follows_on_user_id_and_follow_id", unique: true
+    t.index ["user_id"], name: "index_follows_on_user_id"
   end
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -52,6 +54,20 @@ ActiveRecord::Schema.define(version: 2020_05_09_142952) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["room_id"], name: "index_messages_on_room_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "message_id"
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "room_id"
+    t.index ["message_id"], name: "index_notifications_on_message_id"
+    t.index ["visited_id"], name: "index_notifications_on_visited_id"
+    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
   end
 
   create_table "requests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -118,6 +134,8 @@ ActiveRecord::Schema.define(version: 2020_05_09_142952) do
 
   add_foreign_key "entries", "rooms"
   add_foreign_key "entries", "users"
+  add_foreign_key "follows", "users"
+  add_foreign_key "follows", "users", column: "follow_id"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
 end

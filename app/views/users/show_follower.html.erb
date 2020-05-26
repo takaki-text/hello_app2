@@ -1,9 +1,9 @@
 <% @user.followers.each do |user| %>
-<table>
-<tr>
-  <td>  <%= user.name %> </td>
-  <td><%= link_to '詳細', show2_user_path(user) %></td>
-</tr>
+ <table>
+  <tr>
+   <td><img src=<%= user.image %> class = "icon_image_messeges"><%= link_to user.name , user_path(user.id)%></td>
+  </tr>
 
-</table>
+ </table>
 <% end %>
+

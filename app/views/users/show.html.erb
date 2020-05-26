@@ -3,7 +3,22 @@
  <%= @user.name %>
  <h4> 性別</h4>
  <%= @user.sex %>
- <% @user ||= current_user %>
+
+<% unless current_user == @user %>
+  <% if current_user.following?(@user) %>
+    <%= form_for(current_user.follows.find_by(follow_id: @user.id), html: { method: :delete }) do |f| %>
+      <%= hidden_field_tag :follow_id, @user.id %>
+      <%= f.submit 'Unfollow', class: 'btn btn-danger btn-block' %>
+    <% end %>
+  <% else %>
+    <%= form_for(current_user.follows.build) do |f| %>
+      <%= hidden_field_tag :follow_id, @user.id %>
+      <%= f.submit 'Follow', class: 'btn btn-primary btn-block' %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% @user ||= current_user %>
 <div class="stats">
   <a href="<%= following_user_path(@user) %>">
     <strong id="following" class="stat">
@@ -18,6 +33,24 @@
     Follower
   </a>
 </div>
+<% if @user.id == current_user.id %>
+
+<% else %>
+  <% if @isRoom == true %>
+    <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
+  <% else %>
+    <%= form_for @room do |f| %>
+      <%= fields_for @entry do |e| %>
+        <%= e.hidden_field :user_id, :value=> @user.id %>
+      <% end %>
+      <%= f.submit "チャットを始める" %>
+    <% end %>
+  <% end %>
+<% end %>
+
+
+
+
  <h4> スキル</h4>
 <% @user.tag_list.each do |tag| %>
   <span class="badge badge-primary"><%= tag %></span>
@@ -26,7 +59,12 @@
  <%= @user.career %>
  <h4> 自己紹介</h4>
  <%= @user.introduction %>
-<li> <%= link_to 'プロフィール情報変更', edit_user_registration_path %> <li>
+ 
+<% if current_user == @user %>
+
+<%= link_to 'プロフィール情報変更', edit_user_registration_path %>
+
+<% end %>
 <h4> 提供できるサービス</h4>
  <%= @user.declaration %>
 <h4> 登録サービス</h4>
@@ -34,17 +72,24 @@
   <hr>
   <p><%=course.title%></p>
   <p><%=course.plan%></p>
-<% course.tag_list.each do |tag| %>
-  <span class="badge badge-primary"><%= tag %></span>
-<% end %>
-<p><span><%= link_to '編集',  "/courses/#{course.id}/edit" %></span></p>
-  <span><%= link_to "削除","/courses/#{course.id}/destroy",{method:"post"} %></span>
+  <% course.tag_list.each do |tag| %>
+   <span class="badge badge-primary"><%= tag %></span>
+  <% end %>
+  <% if @user.id == current_user.id %>
+   <p><span><%= link_to '編集',  "/courses/#{course.id}/edit" %></span></p>
+   <span><%= link_to "削除","/courses/#{course.id}/destroy",{method:"post"} %></span>
+  <% else %>
+  <% end %>
 <% end %>
 <h4> 登録要望</h4>
 <% @demands.each do |demand| %>
-<hr>
-  <p><span>要望: </span><%=demand.body%><span><%= link_to '編集',  "/demands/#{demand.id}/edit" %></span></p>
-  <span><%= link_to "削除","/demands/#{demand.id}/destroy",{method:"post"} %></span>
+  <hr>
+  <% if @user.id == current_user.id %>
+    <p><span><%=demand.body%></p>
+    <p><span><%= link_to '編集',  "/demands/#{demand.id}/edit" %></span></p>
+    <span><%= link_to "削除","/demands/#{demand.id}/destroy",{method:"post"} %></span>
+  <% else %>
+ <% end %>
 <% end %>
 
 
