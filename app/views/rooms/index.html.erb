@@ -1,3 +1,6 @@
+<h3 class="text-center">メッセージ</h3>
+<h5><%= link_to "トップページへ戻る", root_path %></h5>
+<br>
 <% @opponentEntry.each do |e| %>
 <p><img src=<%= e.user.image %> class = "icon_image_messeges">
     <%=link_to e.user.name, "/rooms/#{e.room.id}", style:"font-weight: bold;"%></p>

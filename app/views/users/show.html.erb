@@ -85,7 +85,8 @@
 <% @demands.each do |demand| %>
   <hr>
   <% if @user.id == current_user.id %>
-    <p><span><%=demand.body%><%= link_to '編集',  "/demands/#{demand.id}/edit" %></span></p>
+    <p><span><%=demand.body%></p>
+    <p><span><%= link_to '編集',  "/demands/#{demand.id}/edit" %></span></p>
     <span><%= link_to "削除","/demands/#{demand.id}/destroy",{method:"post"} %></span>
   <% else %>
  <% end %>
