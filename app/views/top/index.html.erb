@@ -9,20 +9,14 @@ EDIT ON
   </label>
   <div id="sidebarMenu">
     <ul class="sidebarMenuInner">
-       <li> <%= link_to '新規登録', new_user_registration_path %> <li>
-       <li> <%= link_to 'ログイン', new_user_session_path %> <li>
-       <li><% if user_signed_in? %> 
+      <li> <%= link_to '新規登録', new_user_registration_path %> <li>
+      <li> <%= link_to 'ログイン', new_user_session_path %> <li>
+      <li><% if user_signed_in? %> 
             <%= link_to 'プロフィール', user_path(current_user.id)%>
         <% else %>
              <%= link_to "プロフィール", new_user_session_path %> 
-        <% end %>
-      <li>
-      <li><% if user_signed_in? %> 
-            <%= link_to 'メッセージ', rooms_path %>
-        <% else %>
-             <%= link_to "メッセージ", new_user_session_path %> 
-        <% end %>
-      <li>
+        <% end %><li>
+      <li><%= link_to 'メッセージ', rooms_path %><li>
       
 
       
@@ -36,19 +30,10 @@ EDIT ON
           <% end %>
       <li>
 
-      <li><% if user_signed_in? %> 
-            <%= link_to "新規サービス登録", courses_new_path %>
-        <% else %>
-            <%= link_to "新規サービス登録", new_user_session_path %> 
-        <% end %>
+      <li><%= link_to "新規サービス登録", courses_new_path %>
       <li>
       <li><%= link_to "サービス一覧", "/courses" %><li>
-      <li><% if user_signed_in? %> 
-            <%= link_to "要望登録", demands_new_path %>
-        <% else %>
-            <%= link_to "新規サービス登録", new_user_session_path %> 
-        <% end %>
-      <li>
+      <li><%= link_to "要望登録", demands_new_path %><li>
       
       
     

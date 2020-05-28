@@ -1,12 +1,12 @@
 class CoursesController < ApplicationController
-  
+  before_action :authenticate_user!
   def new
     @course = Course.new
   end
-  
   def index
     @courses = Course.all
   end
+  
 
   def show
     @course = Course.find(params[:id])
@@ -46,7 +46,5 @@ class CoursesController < ApplicationController
   def course_params
     params.require(:course).permit(:plan, :title, :tag_list,)
   end
-  def after_courses_new_path_for(resource)
-    root_path
-  end
+  
 end
