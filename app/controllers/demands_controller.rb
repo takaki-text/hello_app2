@@ -1,12 +1,14 @@
 class DemandsController < ApplicationController
+  
+  before_action :authenticate_user!
   def new
     @demand = Demand.new
   end
-  
   def index
     @demands = Demand.all
     
   end
+  
 
   def show
     @demand = Demand.find(params[:id])
