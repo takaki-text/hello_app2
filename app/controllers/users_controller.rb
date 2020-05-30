@@ -23,13 +23,16 @@ class UsersController < ApplicationController
         @entry = Entry.new
       end
     end
-  
-
   end
   def show2
     @user = User.find(params[:id])
     @courses = @user.courses
     @demands = @user.demands
+  end
+  def following
+    @user  = User.find(params[:id])
+    @users = @user.followings
+    render 'show_follow'
   end
 
   def followers
@@ -37,4 +40,14 @@ class UsersController < ApplicationController
   @users = @user.followers
   render 'show_follower'
   end
+  def hide
+    @user = User.find(params[:id])
+    #is_deletedカラムにフラグを立てる(defaultはfalse)
+    @user.update(deleted_at: true)
+    #ログアウトさせる
+    reset_session
+    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    redirect_to root_path
+end
+
 end

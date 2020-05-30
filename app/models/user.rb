@@ -20,6 +20,7 @@ class User < ApplicationRecord
          has_many :entries, dependent: :destroy
          has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
          has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+         acts_as_paranoid
          def follow(other_user)
           unless self == other_user
             self.follows.find_or_create_by(follow_id: other_user.id)
@@ -43,9 +44,11 @@ class User < ApplicationRecord
             )
             notification.save if notification.valid?
           end
-        end
+         end
       
         
          acts_as_taggable
-        
+         def active_for_authentication?
+          super && (self.deleted_at == false)
+         end
 end
