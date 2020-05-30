@@ -5,7 +5,7 @@
 <% if user_signed_in? %>
     <strong><a href="/users/<%= course.user.id %>" ><img src=<%= course.user.image %> class = "icon_image_messeges"><%= course.user.name %></a></strong>
         <% else %>
-    <strong><a href="/course/<%= course.user.id %>" ><img src=<%= course.user.image %> class = "icon_image_messeges"><%= course.user.name %></a></strong>
+    <strong><a href="/users/<%= course.user.id %>/show2 " ><img src=<%= course.user.image %> class = "icon_image_messeges"><%= course.user.name %></a></strong>
         <% end %>
 
  <p><%= course.title %></p>

@@ -1,6 +1,5 @@
 class DemandsController < ApplicationController
-  
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :index
   def new
     @demand = Demand.new
   end
