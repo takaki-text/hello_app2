@@ -10,12 +10,12 @@ class User < ApplicationRecord
 
          attr_accessor :current_password
          mount_uploader :image, ImageUploader
-         has_many :courses
-         has_many :demands
-         has_many :follows
-         has_many :followings, through: :follows, source: :follow
-         has_many :reverse_of_follows, class_name: 'Follow', foreign_key: 'follow_id'
-         has_many :followers, through: :reverse_of_follows, source: :user
+         has_many :courses, dependent: :destroy
+         has_many :demands, dependent: :destroy
+         has_many :follows, dependent: :destroy
+         has_many :followings, through: :follows, source: :follow, dependent: :destroy
+         has_many :reverse_of_follows, class_name: 'Follow', foreign_key: 'follow_id', dependent: :destroy
+         has_many :followers, through: :reverse_of_follows, source: :user, dependent: :destroy
          has_many :messages, dependent: :destroy
          has_many :entries, dependent: :destroy
          has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
@@ -49,6 +49,6 @@ class User < ApplicationRecord
         
          acts_as_taggable
          def active_for_authentication?
-          super && (self.deleted_at == false)
+          super && (self.is_deleted == false)
          end
 end

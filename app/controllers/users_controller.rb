@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   def hide
     @user = User.find(params[:id])
     #is_deletedカラムにフラグを立てる(defaultはfalse)
-    @user.update(deleted_at: true)
+    @user.update(is_deleted: true)
     #ログアウトさせる
     reset_session
     flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
