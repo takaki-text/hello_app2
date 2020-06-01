@@ -35,7 +35,7 @@ Rails.application.routes.draw do
 
     resources :users do
       member do
-       get :following, :followers, :show2, :hide
+       get :following, :followers, :show2
       end
     end
    

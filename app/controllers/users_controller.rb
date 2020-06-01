@@ -39,12 +39,9 @@ class UsersController < ApplicationController
   @users = @user.followers
   render 'show_follower'
   end
-  def hide
+  def destroy
     @user = User.find(params[:id])
-    #is_deletedカラムにフラグを立てる(defaultはfalse)
-    @user.update(is_deleted: true)
-    #ログアウトさせる
-    reset_session
+    @user.destroy
     flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
     redirect_to root_path
 end

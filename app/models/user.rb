@@ -45,10 +45,6 @@ class User < ApplicationRecord
             notification.save if notification.valid?
           end
          end
-         acts_as_paranoid
-         def active_for_authentication?
-          super && (self.is_deleted == false)
-        end
         
          
 end
