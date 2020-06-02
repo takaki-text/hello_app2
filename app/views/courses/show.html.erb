@@ -1,43 +1,15 @@
-<img src=<%= @user.image %> class = "icon_image">
-<h4> 名前</h4>
- <%= @user.name %>
- <h4> 性別</h4>
- <%= @user.sex %>
-
-
-      
-<%=link_to  'Follow Messsge ログインが必要です', "/users/#{@user.id}", class: 'btn btn-primary btn-block' %>
-    
-
-
-  <h4>　</h4>
-<% @user ||= current_user %>
-
-      <%= @user.followings.count %><span>Follow</span>
-    
-      <%= @user.followers.count %><span>Follower</span>
-    
-
-  
-
-
- <h4> スキル</h4>
- <span>tag: </span><% @user.tag_list.each do |tag| %>
-  <span class="badge badge-primary"><%= tag %></span>
+<h3 class="text-center">サービス</h3>
+<h5><%= link_to "トップページへ戻る", root_path %></h5>
+<% if user_signed_in? %>
+    <strong><a href="/users/<%= @course.user.id %>" ><img src=<%= @course.user.image %> class = "icon_image_messeges"><%= @course.user.name %></a></strong>
+<% else %>
+    <strong><a href="/users/<%= @course.user.id %>/show2 " ><img src=<%= @course.user.image %> class = "icon_image_messeges"><%= @course.user.name %></a></strong>
 <% end %>
- <h4> 経歴</h4>
- <%= @user.career %>
- <h4> 自己紹介</h4>
- <%= @user.introduction %>
-<h4> 提供できるサービス</h4>
- <%= @user.declaration %>
- <% @courses.each do |course| %>
-  <hr>
-  <p><span>サービス: </span><%= course.title %></p>
-  <%= course.plan %>
-  <% course.tag_list.each do |tag| %>
-  <span class="badge badge-primary"><%= tag %></span>
+<p><%= @course.title %></p>
+  <p><%= @course.plan %></p>
+  <% @course.tag_list.each do |tag| %>
+  <span class="badge badge-primary"><%=tag %></span>
 <% end %>
-  
-  
-<% end %>
+<br>
+
+<h5><%= link_to "トップページへ戻る", root_path %></h5>
