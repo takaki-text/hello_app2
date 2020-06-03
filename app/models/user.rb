@@ -10,16 +10,17 @@ class User < ApplicationRecord
 
          attr_accessor :current_password
          mount_uploader :image, ImageUploader
-         has_many :courses
-         has_many :demands
-         has_many :follows
-         has_many :followings, through: :follows, source: :follow
-         has_many :reverse_of_follows, class_name: 'Follow', foreign_key: 'follow_id'
-         has_many :followers, through: :reverse_of_follows, source: :user
+         has_many :courses, dependent: :destroy
+         has_many :demands, dependent: :destroy
+         has_many :follows, dependent: :destroy
+         has_many :followings, through: :follows, source: :follow, dependent: :destroy
+         has_many :reverse_of_follows, class_name: 'Follow', foreign_key: 'follow_id', dependent: :destroy
+         has_many :followers, through: :reverse_of_follows, source: :user, dependent: :destroy
          has_many :messages, dependent: :destroy
          has_many :entries, dependent: :destroy
          has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
          has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+         acts_as_taggable
          def follow(other_user)
           unless self == other_user
             self.follows.find_or_create_by(follow_id: other_user.id)
@@ -43,9 +44,7 @@ class User < ApplicationRecord
             )
             notification.save if notification.valid?
           end
-        end
-      
+         end
         
-         acts_as_taggable
-        
+         
 end

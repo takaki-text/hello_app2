@@ -5,7 +5,7 @@
     <% if user_signed_in? %>
     <strong><a href="/users/<%= demand.user.id %>" ><img src=<%= demand.user.image %> class = "icon_image_messeges"><%= demand.user.name %></a></strong>
     <% else %>
-    <strong><a href="/course/<%= demand.user.id %>" ><img src=<%= demand.user.image %> class = "icon_image_messeges"><%= demand.user.name %></a></strong>
+    <strong><a href="/users/<%= demand.user.id %>/show2 " ><img src=<%= demand.user.image %> class = "icon_image_messeges"><%= demand.user.name %></a></strong>
     <% end %>
   <p><%=demand.body%></p>
 <% end %>

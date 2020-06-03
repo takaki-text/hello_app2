@@ -5,14 +5,15 @@
 <% if user_signed_in? %>
     <strong><a href="/users/<%= course.user.id %>" ><img src=<%= course.user.image %> class = "icon_image_messeges"><%= course.user.name %></a></strong>
         <% else %>
-    <strong><a href="/course/<%= course.user.id %>" ><img src=<%= course.user.image %> class = "icon_image_messeges"><%= course.user.name %></a></strong>
+    <strong><a href="/users/<%= course.user.id %>/show2 " ><img src=<%= course.user.image %> class = "icon_image_messeges"><%= course.user.name %></a></strong>
         <% end %>
 
- <p><%= course.title %></p>
-  <p><%=course.plan%></p>
+ <p><%=link_to course.title, "/courses/#{course.id}" %></p>
+  <p><%=link_to course.plan, "/courses/#{course.id}" %></p>
   <% course.tag_list.each do |tag| %>
-  <span class="badge badge-primary"><%= tag %></span>
+  <span class="badge badge-primary"><%=tag %></span>
 <% end %>
 <% end %>
+<br>
 
 <h5><%= link_to "トップページへ戻る", root_path %></h5>
